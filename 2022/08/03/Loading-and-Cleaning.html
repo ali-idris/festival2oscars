@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      33 min read
+      34 min read
     
 </span></p>
 
@@ -139,6 +139,13 @@ window.onload = wrap_img;
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><br /></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <hr />
 
 </div>
@@ -179,12 +186,6 @@ window.onload = wrap_img;
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr />
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="QUE-Why-are-the-lines-at-different-levels-of-faintness-even-though-I've-inputted-the-same-'***'-code?">QUE Why are the lines at different levels of faintness even though I've inputted the same '***' code?<a class="anchor-link" href="#QUE-Why-are-the-lines-at-different-levels-of-faintness-even-though-I've-inputted-the-same-'***'-code?"> </a></h1>
 </div>
 </div>
 </div>
@@ -998,7 +999,7 @@ Name: Arrival Delay in Minutes, Length: 472, dtype: int64
 </ul>
 <p>2: looked at thew data types of each column</p>
 <ul>
-<li>they all seem to be correct except for 'Arrival Delay in Minutes' which could be changed from float to int</li>
+<li>they all seem to be correct except for 'Arrival Delay in Minutes' which could be changed from float to int. I will look into this further in the next section.</li>
 </ul>
 <p>3: looked at the contents of each column</p>
 <ul>
@@ -1021,7 +1022,7 @@ Name: Arrival Delay in Minutes, Length: 472, dtype: int64
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Cleaning-the-dataset">Cleaning the dataset<a class="anchor-link" href="#Cleaning-the-dataset"> </a></h2><p>In this section I will be:</p>
+<h2 id="Removing-or-fixing-missing/null-values">Removing or fixing missing/null values<a class="anchor-link" href="#Removing-or-fixing-missing/null-values"> </a></h2><p>In this section I will be:</p>
 <ul>
 <li>dealing with null values or missing rows</li>
 </ul>
@@ -1527,7 +1528,14 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Summary-of-Cleaning-the-dataset-section">Summary of Cleaning the dataset section<a class="anchor-link" href="#Summary-of-Cleaning-the-dataset-section"> </a></h5><p>In this section I:</p>
+<p>Later in this notebook I will deep dive into the satisfaction ratings and identify if the scale is from '0-5' or '1-5'. If the latter is true then I will need to address all ratings at 0. This information is not provided by the Kaggle author and other users were also unable to find this answer.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Summary-of-'-Removing-or-fixing-missing/null-values'-section">Summary of ' Removing or fixing missing/null values' section<a class="anchor-link" href="#Summary-of-'-Removing-or-fixing-missing/null-values'-section"> </a></h5><p>In this section I:</p>
 <p>1: found a small % of null values in the 'Arrival Delay in Minutes' column, but due to multicollinearity I am leaving the column as is for now</p>
 
 </div>
@@ -1559,13 +1567,10 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Removing-duplicate-rows,-analysing-data-types,-renaming-columns-&amp;-exporting-the-final-dataframe">Removing duplicate rows, analysing data types, renaming columns &amp; exporting the final dataframe<a class="anchor-link" href="#Removing-duplicate-rows,-analysing-data-types,-renaming-columns-&amp;-exporting-the-final-dataframe"> </a></h2><p>In this section I will be:</p>
+<h2 id="Removing-duplicate-rows-&amp;-analysing-data-types">Removing duplicate rows &amp; analysing data types<a class="anchor-link" href="#Removing-duplicate-rows-&amp;-analysing-data-types"> </a></h2><p>In this section I will be:</p>
 <ul>
 <li>removing any duplicate rows</li>
 <li>analysing the data types of each column and making appropriate adjustments if required</li>
-<li>investigating categorical column values and making appropriate adjustments if required</li>
-<li>renaming columns appropriately &amp; creating an updated data dictionary</li>
-<li>exporting our final dataframe as a .csv that we can use in our next EDA notebook</li>
 </ul>
 
 </div>
@@ -1968,6 +1973,38 @@ File <span class="ansi-green-fg">~/opt/anaconda3/lib/python3.9/site-packages/pan
 </div>
     
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Summary-of-'Removing-duplicate-rows-&amp;-analysing-data-types'-section">Summary of 'Removing duplicate rows &amp; analysing data types' section<a class="anchor-link" href="#Summary-of-'Removing-duplicate-rows-&amp;-analysing-data-types'-section"> </a></h5><p>In this section I:</p>
+<p>1: found that there were 0 duplicate rows, so there was nothing to remove</p>
+<p>2: looked at thew data types of each column</p>
+<ul>
+<li>'Arrival Delay in Minutes' was mistakenly a float, this was changed to 'int'</li>
+<li>The categorical columns were labelled as an 'object', they were changed to a 'category' data type </li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Final-data-cleaning,-updating-the-data-dictionary-and-exporting-the-.csv">Final data cleaning, updating the data dictionary and exporting the .csv<a class="anchor-link" href="#Final-data-cleaning,-updating-the-data-dictionary-and-exporting-the-.csv"> </a></h2><p>In this section I will be:</p>
+<ul>
+<li>investigating categorical column values and making appropriate adjustments if required</li>
+<li>renaming columns appropriately &amp; creating an updated data dictionary</li>
+<li>exporting our final dataframe as a .csv that we can use in our next EDA notebook</li>
+</ul>
+
+</div>
+</div>
+</div>
     
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -2158,6 +2195,7 @@ File <span class="ansi-green-fg">~/opt/anaconda3/lib/python3.9/site-packages/pan
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>These column names need to be optimised, so they best describe what they are showing.</p>
+<p>I also want underscores between wach string so I can more easily refer to each column when coding.</p>
 
 </div>
 </div>
@@ -2254,7 +2292,7 @@ File <span class="ansi-green-fg">~/opt/anaconda3/lib/python3.9/site-packages/pan
       <th>seat_comfort_satisfaction_rating</th>
       <th>inflight_entertainment_satisfaction_rating</th>
       <th>onboard_service_satisfaction_rating</th>
-      <th>leg_room_n_satisfaction_rating</th>
+      <th>leg_room_satisfaction_rating</th>
       <th>baggage_handling_satisfaction_rating</th>
       <th>checkin_service_satisfaction_rating</th>
       <th>inflight_service_satisfaction_rating</th>
@@ -2286,7 +2324,7 @@ File <span class="ansi-green-fg">~/opt/anaconda3/lib/python3.9/site-packages/pan
       <td>4</td>
       <td>3</td>
       <td>0</td>
-      <td>0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>1</th>
@@ -2310,7 +2348,7 @@ File <span class="ansi-green-fg">~/opt/anaconda3/lib/python3.9/site-packages/pan
       <td>3</td>
       <td>2</td>
       <td>0</td>
-      <td>0</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
@@ -2332,67 +2370,6 @@ File <span class="ansi-green-fg">~/opt/anaconda3/lib/python3.9/site-packages/pan
 </div>
 </div>
 </div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 129880 entries, 0 to 129879
-Data columns (total 24 columns):
- #   Column                                      Non-Null Count   Dtype   
----  ------                                      --------------   -----   
- 0   id                                          129880 non-null  int64   
- 1   satisfaction_target                         129880 non-null  category
- 2   customer_gender                             129880 non-null  category
- 3   customer_loyalty_type                       129880 non-null  category
- 4   customer_age                                129880 non-null  int64   
- 5   customer_travel_type                        129880 non-null  category
- 6   customer_class_type                         129880 non-null  category
- 7   flight_distance                             129880 non-null  int64   
- 8   flight_wifi_satisfaction_rating             129880 non-null  int64   
- 9   departure/arrival_time_satisfaction_rating  129880 non-null  int64   
- 10  online_booking_satisfaction_rating          129880 non-null  int64   
- 11  gate_location_satisfaction_rating           129880 non-null  int64   
- 12  food/drink_satisfaction_rating              129880 non-null  int64   
- 13  online_boarding_satisfaction_rating         129880 non-null  int64   
- 14  seat_comfort_satisfaction_rating            129880 non-null  int64   
- 15  inflight_entertainment_satisfaction_rating  129880 non-null  int64   
- 16  onboard_service_satisfaction_rating         129880 non-null  int64   
- 17  leg_room_n_satisfaction_rating              129880 non-null  int64   
- 18  baggage_handling_satisfaction_rating        129880 non-null  int64   
- 19  checkin_service_satisfaction_rating         129880 non-null  int64   
- 20  inflight_service_satisfaction_rating        129880 non-null  int64   
- 21  cleanliness_satisfaction_rating             129880 non-null  int64   
- 22  departure_delay_in_minutes                  129880 non-null  int64   
- 23  arrival_delay_in_minutes                    129487 non-null  float64 
-dtypes: category(5), float64(1), int64(18)
-memory usage: 19.4 MB
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Data-Description-v2">Data Description v2<a class="anchor-link" href="#Data-Description-v2"> </a></h4><p>Categorical Columns:</p>
@@ -2423,7 +2400,7 @@ memory usage: 19.4 MB
 <li><code>onboard_service_satisfaction_rating</code> --&gt; This is the satisfaction rating of onboard service</li>
 <li><code>baggage_handling_satisfaction_rating</code> --&gt; This is the satisfaction rating of baggage handling</li>
 <li><code>checkin_service_satisfaction_rating</code> --&gt; This is the satisfaction rating of the checkin service</li>
-<li><code>leg_room_n_satisfaction_rating</code> --&gt; This is the satisfaction rating of inflight leg room</li>
+<li><code>leg_room_satisfaction_rating</code> --&gt; This is the satisfaction rating of inflight leg room</li>
 <li><code>inflight_service_satisfaction_rating</code> --&gt; This is the satisfaction rating of the inflight service</li>
 <li><code>gate_location_satisfaction_rating</code> --&gt; This is the satisfaction rating of gate location</li>
 <li><code>cleanliness_satisfaction_rating</code> --&gt; This is the satisfaction rating of how clean the aeroplane</li>
@@ -2458,26 +2435,58 @@ memory usage: 19.4 MB
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h5 id="Summary-of-Loading-and-understanding-the-dataset-section">Summary of Loading and understanding the dataset section<a class="anchor-link" href="#Summary-of-Loading-and-understanding-the-dataset-section"> </a></h5><p>In this section I:</p>
-<p>removing any duplicate rows
-analysing the data types of each column and making appropriate adjustments if required
-investigating categorical column values and making appropriate adjustments if required
-renaming columns appropriately
+<p>investigating categorical column values and making appropriate adjustments if required
+renaming columns appropriately &amp; creating an updated data dictionary
 exporting our final dataframe as a .csv that we can use in our next EDA notebook</p>
-<p>1: found that there were 0 duplicate rows, so there was nothing to remove</p>
-<p>2: looked at thew data types of each column</p>
-<ul>
-<li>'Arrival Delay in Minutes' was mistakenly a float, this was changed to 'int'</li>
-<li>The categorical columns were labelled as an 'object', they were changed to a 'category' data type </li>
-</ul>
-<p>3: corrected the values of categorical columns</p>
+<p>1: corrected the values of categorical columns</p>
 <ul>
 <li>Values were shortened if possible</li>
 <li>All values now begin with a capital letter</li>
 </ul>
-<p>4: renamed specific colunns</p>
+<p>2: renamed specific colunns</p>
 <ul>
 <li>They were all given lower case, appropriate names that made it easier for a first time reader to idenitfy what each showed </li>
 </ul>
+<p>3: created an updated data dictionary</p>
+<p>4: exported the final data frame to the data folder within my capstone folder as a .csv called 'cleaned_airlines'</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Notebook-Ending-Remarks">Notebook Ending Remarks<a class="anchor-link" href="#Notebook-Ending-Remarks"> </a></h4><p>In this notebook, I have completed some cleaning steps to ensure the data is of its highest quality before processing may begin. This will give the most accurate analysis, and thus more accurate findings and insights.</p>
+<p>In the next notebook, I will be exploring my data in more detail by doing some exploratory data analysis. See Notebook 2-EDA.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="End-of-notebook-review">End of notebook review<a class="anchor-link" href="#End-of-notebook-review"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Notebook Achievements</strong></p>
+<p>In this notebook I:</p>
+<ul>
+<li>Loaded the dataset</li>
+<li>Created an initial data dictionary</li>
+<li>Identified and discussed null values</li>
+<li>Changed the data types of colunns</li>
+<li>Changed the data types of categorical colunns</li>
+<li>Changed the names of specific colunmns</li>
+<li>Created a final data dictionary</li>
+<li>Exported the final dataframe as a .csv</li>
+</ul>
+<hr />
+<p><strong>Data Insights and Learnings</strong></p>
+<p>I saw that my data has ~130,000 rows and 24 columnns, which is sufficient for this capstone project. Over the course of the notebooks I should be able to identify which columns/features are important for airlines to focus on in relation to customer satisfaction. I also gained an understanding of what each column was showing and have some rough ideas of which columnns are likely to be impactful in relation to models.</p>
+<hr />
+<p><strong>Next Steps</strong></p>
+<p>The main aspect of the next EDA notebook is to explore the dataset with more depth, especially with the use of visuals. I will idenitfy trends and outliers which will help me to to identify which colunns are likely to be of significant in regards to models. I may also do a small amount of additonal cleaning (e.g. dropping columns) once I am presented with addititional information.</p>
 
 </div>
 </div>
@@ -2489,7 +2498,7 @@ exporting our final dataframe as a .csv that we can use in our next EDA notebook
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Done</span>
 </pre></div>
 
     </div>
