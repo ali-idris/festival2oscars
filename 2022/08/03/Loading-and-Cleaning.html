@@ -279,7 +279,7 @@ window.onload = wrap_img;
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Loading-and-understanding-the-dataset">Loading and understanding the dataset<a class="anchor-link" href="#Loading-and-understanding-the-dataset"> </a></h3><p>In this section I will be:</p>
+<h2 id="Loading-and-understanding-the-dataset">Loading and understanding the dataset<a class="anchor-link" href="#Loading-and-understanding-the-dataset"> </a></h2><p>In this section I will be:</p>
 <ul>
 <li>reading the .csv file so I can load it into this notebook</li>
 <li>understanding what each column is showing</li>
@@ -958,10 +958,11 @@ Name: Arrival Delay in Minutes, Length: 472, dtype: int64
 <li><code>Gender</code> --&gt; This shows whether or not the customer was male or female</li>
 <li><code>Type of Travel</code> --&gt; This shows whether or not the customer travelled for business or personal travel</li>
 <li><code>Class</code> --&gt; This is the type of class the customer flew in (Eco, Eco Plus, Business)</li>
-<li><code>Gate location</code> --&gt; This is the satisfaction rating of gate location</li>
+<li><code>Customer Type</code> --&gt; This is whether or not the customer was loyal or disloyal</li>
 </ul>
 <p>Numerical Column With No Range Limit:</p>
 <ul>
+<li><code>id</code> --&gt; This is the unique id of each customer</li>
 <li><code>Age</code> --&gt; This is the age of the customer</li>
 <li><code>Flight Distance</code> --&gt; This is the flight distance in miles</li>
 <li><code>Gate location</code> --&gt; This is the satisfaction rating of gate location</li>
@@ -1020,10 +1021,9 @@ Name: Arrival Delay in Minutes, Length: 472, dtype: int64
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Cleaning-the-dataset-&amp;-renaming-columns">Cleaning the dataset &amp; renaming columns<a class="anchor-link" href="#Cleaning-the-dataset-&amp;-renaming-columns"> </a></h3><p>In this section I will be:</p>
+<h2 id="Cleaning-the-dataset">Cleaning the dataset<a class="anchor-link" href="#Cleaning-the-dataset"> </a></h2><p>In this section I will be:</p>
 <ul>
 <li>dealing with null values or missing rows</li>
-<li>appropriately renaming columns</li>
 </ul>
 
 </div>
@@ -1527,23 +1527,8 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Summary-of-Loading-and-understanding-the-dataset-section">Summary of Loading and understanding the dataset section<a class="anchor-link" href="#Summary-of-Loading-and-understanding-the-dataset-section"> </a></h5><p>In this section I:</p>
-<p>1: loaded in the dataset</p>
-<ul>
-<li>found the dataset had 24 columns and ~130,000 rows. Having a larger number of rows would make our models more accurate but 130,000 rows is satisfactory for this initial project</li>
-</ul>
-<p>2: looked at thew data types of each column</p>
-<ul>
-<li>they all seem to be correct except for 'Arrival Delay in Minutes' which could be changed from float to int</li>
-</ul>
-<p>3: looked at the contents of each column</p>
-<ul>
-<li>this gives me an fundamental understanding of what each column is showing but I will need to explore further in the EDA notebook</li>
-</ul>
-<p>4: created an initial data dictionary</p>
-<ul>
-<li>you can refer to this dictionary if you want clarification on what each column is showing for now. We will be creating a new data dictionary once we rename columns and potneitallty drop columns.</li>
-</ul>
+<h5 id="Summary-of-Cleaning-the-dataset-section">Summary of Cleaning the dataset section<a class="anchor-link" href="#Summary-of-Cleaning-the-dataset-section"> </a></h5><p>In this section I:</p>
+<p>1: found a small % of null values in the 'Arrival Delay in Minutes' column, but due to multicollinearity I am leaving the column as is for now</p>
 
 </div>
 </div>
@@ -1574,12 +1559,12 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Removing-duplicate-rows,-analysing-data-types,-renaming-columns-&amp;-exporting-the-final-dataframe">Removing duplicate rows, analysing data types, renaming columns &amp; exporting the final dataframe<a class="anchor-link" href="#Removing-duplicate-rows,-analysing-data-types,-renaming-columns-&amp;-exporting-the-final-dataframe"> </a></h3><p>In this section I will be:</p>
+<h2 id="Removing-duplicate-rows,-analysing-data-types,-renaming-columns-&amp;-exporting-the-final-dataframe">Removing duplicate rows, analysing data types, renaming columns &amp; exporting the final dataframe<a class="anchor-link" href="#Removing-duplicate-rows,-analysing-data-types,-renaming-columns-&amp;-exporting-the-final-dataframe"> </a></h2><p>In this section I will be:</p>
 <ul>
 <li>removing any duplicate rows</li>
 <li>analysing the data types of each column and making appropriate adjustments if required</li>
 <li>investigating categorical column values and making appropriate adjustments if required</li>
-<li>renaming columns appropriately</li>
+<li>renaming columns appropriately &amp; creating an updated data dictionary</li>
 <li>exporting our final dataframe as a .csv that we can use in our next EDA notebook</li>
 </ul>
 
@@ -1900,7 +1885,7 @@ memory usage: 19.4 MB
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">IntCastingNaNError</span>                        Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [73]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 2&gt;</span><span class="ansi-blue-fg">()</span>
+Input <span class="ansi-green-fg">In [101]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 2&gt;</span><span class="ansi-blue-fg">()</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> <span style="color: rgb(95,135,135)"># Below I am changing the the &#39;Arrival Delay in Minutes&#39; column to the int datatype</span>
 <span class="ansi-green-fg">----&gt; 2</span> df[<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Arrival Delay in Minutes</span><span style="color: rgb(175,0,0)">&#39;</span>] <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">df</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">Arrival Delay in Minutes</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">astype</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">int</span><span class="ansi-yellow-bg">)</span>
 
@@ -2020,50 +2005,6 @@ File <span class="ansi-green-fg">~/opt/anaconda3/lib/python3.9/site-packages/pan
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 129880 entries, 0 to 129879
-Data columns (total 24 columns):
- #   Column                             Non-Null Count   Dtype   
----  ------                             --------------   -----   
- 0   id                                 129880 non-null  int64   
- 1   satisfaction_v2                    129880 non-null  category
- 2   Gender                             129880 non-null  category
- 3   Customer Type                      129880 non-null  category
- 4   Age                                129880 non-null  int64   
- 5   Type of Travel                     129880 non-null  category
- 6   Class                              129880 non-null  category
- 7   Flight Distance                    129880 non-null  int64   
- 8   Inflight wifi service              129880 non-null  int64   
- 9   Departure/Arrival time convenient  129880 non-null  int64   
- 10  Ease of Online booking             129880 non-null  int64   
- 11  Gate location                      129880 non-null  int64   
- 12  Food and drink                     129880 non-null  int64   
- 13  Online boarding                    129880 non-null  int64   
- 14  Seat comfort                       129880 non-null  int64   
- 15  Inflight entertainment             129880 non-null  int64   
- 16  On-board service                   129880 non-null  int64   
- 17  Leg room service                   129880 non-null  int64   
- 18  Baggage handling                   129880 non-null  int64   
- 19  Checkin service                    129880 non-null  int64   
- 20  Inflight service                   129880 non-null  int64   
- 21  Cleanliness                        129880 non-null  int64   
- 22  Departure Delay in Minutes         129880 non-null  int64   
- 23  Arrival Delay in Minutes           129487 non-null  float64 
-dtypes: category(5), float64(1), int64(18)
-memory usage: 19.4 MB
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
     
 
@@ -2114,55 +2055,6 @@ memory usage: 19.4 MB
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>-------------------------------------------------------------------
-There are 2 unique values for &#39;satisfaction_v2&#39;. They are:
-
-
-neutral or dissatisfied    73452
-satisfied                  56428
-Name: satisfaction_v2, dtype: int64
--------------------------------------------------------------------
-There are 2 unique values for &#39;Gender&#39;. They are:
-
-
-Female    65899
-Male      63981
-Name: Gender, dtype: int64
--------------------------------------------------------------------
-There are 2 unique values for &#39;Customer Type&#39;. They are:
-
-
-Loyal Customer       106100
-disloyal Customer     23780
-Name: Customer Type, dtype: int64
--------------------------------------------------------------------
-There are 2 unique values for &#39;Type of Travel&#39;. They are:
-
-
-Business travel    89693
-Personal Travel    40187
-Name: Type of Travel, dtype: int64
--------------------------------------------------------------------
-There are 3 unique values for &#39;Class&#39;. They are:
-
-
-Business    62160
-Eco         58309
-Eco Plus     9411
-Name: Class, dtype: int64
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -2237,55 +2129,6 @@ Name: Class, dtype: int64
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>-------------------------------------------------------------------
-There are 2 unique values for &#39;satisfaction_v2&#39;. They are:
-
-
-Dissatisfied    73452
-Satisfied       56428
-Name: satisfaction_v2, dtype: int64
--------------------------------------------------------------------
-There are 2 unique values for &#39;Gender&#39;. They are:
-
-
-Female    65899
-Male      63981
-Name: Gender, dtype: int64
--------------------------------------------------------------------
-There are 2 unique values for &#39;Customer Type&#39;. They are:
-
-
-Loyal       106100
-Disloyal     23780
-Name: Customer Type, dtype: int64
--------------------------------------------------------------------
-There are 2 unique values for &#39;Type of Travel&#39;. They are:
-
-
-Business    89693
-Personal    40187
-Name: Type of Travel, dtype: int64
--------------------------------------------------------------------
-There are 3 unique values for &#39;Class&#39;. They are:
-
-
-Business        62160
-Economy         58309
-Economy Plus     9411
-Name: Class, dtype: int64
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
     
 
@@ -2342,7 +2185,7 @@ Name: Class, dtype: int64
 <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Seat comfort&#39;</span> <span class="p">:</span> <span class="s1">&#39;seat_comfort_satisfaction_rating&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Inflight entertainment&#39;</span> <span class="p">:</span> <span class="s1">&#39;inflight_entertainment_satisfaction_rating&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;On-board service&#39;</span> <span class="p">:</span> <span class="s1">&#39;onboard_service_satisfaction_rating&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Leg room service&#39;</span> <span class="p">:</span> <span class="s1">&#39;leg_room_n_satisfaction_rating&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Leg room service&#39;</span> <span class="p">:</span> <span class="s1">&#39;leg_room_satisfaction_rating&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Baggage handling&#39;</span> <span class="p">:</span> <span class="s1">&#39;baggage_handling_satisfaction_rating&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Checkin service&#39;</span> <span class="p">:</span> <span class="s1">&#39;checkin_service_satisfaction_rating&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Inflight service&#39;</span> <span class="p">:</span> <span class="s1">&#39;inflight_service_satisfaction_rating&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -2485,6 +2328,112 @@ Name: Class, dtype: int64
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Creating-an-updated-data-dictionary">Creating an updated data dictionary<a class="anchor-link" href="#Creating-an-updated-data-dictionary"> </a></h4>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 129880 entries, 0 to 129879
+Data columns (total 24 columns):
+ #   Column                                      Non-Null Count   Dtype   
+---  ------                                      --------------   -----   
+ 0   id                                          129880 non-null  int64   
+ 1   satisfaction_target                         129880 non-null  category
+ 2   customer_gender                             129880 non-null  category
+ 3   customer_loyalty_type                       129880 non-null  category
+ 4   customer_age                                129880 non-null  int64   
+ 5   customer_travel_type                        129880 non-null  category
+ 6   customer_class_type                         129880 non-null  category
+ 7   flight_distance                             129880 non-null  int64   
+ 8   flight_wifi_satisfaction_rating             129880 non-null  int64   
+ 9   departure/arrival_time_satisfaction_rating  129880 non-null  int64   
+ 10  online_booking_satisfaction_rating          129880 non-null  int64   
+ 11  gate_location_satisfaction_rating           129880 non-null  int64   
+ 12  food/drink_satisfaction_rating              129880 non-null  int64   
+ 13  online_boarding_satisfaction_rating         129880 non-null  int64   
+ 14  seat_comfort_satisfaction_rating            129880 non-null  int64   
+ 15  inflight_entertainment_satisfaction_rating  129880 non-null  int64   
+ 16  onboard_service_satisfaction_rating         129880 non-null  int64   
+ 17  leg_room_n_satisfaction_rating              129880 non-null  int64   
+ 18  baggage_handling_satisfaction_rating        129880 non-null  int64   
+ 19  checkin_service_satisfaction_rating         129880 non-null  int64   
+ 20  inflight_service_satisfaction_rating        129880 non-null  int64   
+ 21  cleanliness_satisfaction_rating             129880 non-null  int64   
+ 22  departure_delay_in_minutes                  129880 non-null  int64   
+ 23  arrival_delay_in_minutes                    129487 non-null  float64 
+dtypes: category(5), float64(1), int64(18)
+memory usage: 19.4 MB
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Data-Description-v2">Data Description v2<a class="anchor-link" href="#Data-Description-v2"> </a></h4><p>Categorical Columns:</p>
+<ul>
+<li><code>satisfaction_target</code> --&gt; This is our target feature. It is whether or not a customer was satisfied</li>
+<li><code>customer_gender</code> --&gt; This shows whether or not the customer was male or female</li>
+<li><code>customer_travel_type</code> --&gt; This shows whether or not the customer travelled for business or personal travel</li>
+<li><code>customer_class_type</code> --&gt; This is the type of class the customer flew in (Eco, Eco Plus, Business)</li>
+<li><code>customer_loyalty_type</code> --&gt; This is whether or not the customer was loyal or disloyal</li>
+</ul>
+<p>Numerical Column With No Range Limit:</p>
+<ul>
+<li><code>id</code> --&gt; This is the unique id of each customer</li>
+<li><code>customer_age</code> --&gt; This is the age of the customer</li>
+<li><code>flight_distance</code> --&gt; This is the flight distance in miles</li>
+<li><code>departure_delay_in_minutes</code> --&gt; This is the numnber of minutes the flight was delayed at departure</li>
+<li><code>arrival_delay_in_minutes</code> --&gt; This is the numnber of minutes the flight was delayed at arrival to destination</li>
+</ul>
+<p>Numerical Column Rating 0 - 5:</p>
+<ul>
+<li><code>flight_wifi_satisfaction_rating</code> --&gt; This is the satisfaction rating of the inflight wifi</li>
+<li><code>departure/arrival_time_satisfaction_rating</code> --&gt; This is the satisfaction rating of the inflight wifi</li>
+<li><code>online_booking_satisfaction_rating</code> --&gt; This is the satisfaction rating of the online booking process</li>
+<li><code>food/drink_satisfaction_rating</code> --&gt; This is the satisfaction rating of the food and drink offered in flight</li>
+<li><code>online_booking_satisfaction_rating</code> --&gt; This is the satisfaction rating of the online boarding</li>
+<li><code>seat_comfort_satisfaction_rating</code> --&gt; This is the satisfaction rating of the inflight seats</li>
+<li><code>inflight_service_satisfaction_rating</code> --&gt; This is the satisfaction rating of the inflight entertainment</li>
+<li><code>onboard_service_satisfaction_rating</code> --&gt; This is the satisfaction rating of onboard service</li>
+<li><code>baggage_handling_satisfaction_rating</code> --&gt; This is the satisfaction rating of baggage handling</li>
+<li><code>checkin_service_satisfaction_rating</code> --&gt; This is the satisfaction rating of the checkin service</li>
+<li><code>leg_room_n_satisfaction_rating</code> --&gt; This is the satisfaction rating of inflight leg room</li>
+<li><code>inflight_service_satisfaction_rating</code> --&gt; This is the satisfaction rating of the inflight service</li>
+<li><code>gate_location_satisfaction_rating</code> --&gt; This is the satisfaction rating of gate location</li>
+<li><code>cleanliness_satisfaction_rating</code> --&gt; This is the satisfaction rating of how clean the aeroplane</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Exporting-the-final-dataframe-to-a-.csv-file">Exporting the final dataframe to a .csv file<a class="anchor-link" href="#Exporting-the-final-dataframe-to-a-.csv-file"> </a></h4>
 </div>
 </div>
@@ -2509,21 +2458,25 @@ Name: Class, dtype: int64
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h5 id="Summary-of-Loading-and-understanding-the-dataset-section">Summary of Loading and understanding the dataset section<a class="anchor-link" href="#Summary-of-Loading-and-understanding-the-dataset-section"> </a></h5><p>In this section I:</p>
-<p>1: loaded in the dataset</p>
-<ul>
-<li>found the dataset had 24 columns and ~130,000 rows. Having a larger number of rows would make our models more accurate but 130,000 rows is satisfactory for this initial project</li>
-</ul>
+<p>removing any duplicate rows
+analysing the data types of each column and making appropriate adjustments if required
+investigating categorical column values and making appropriate adjustments if required
+renaming columns appropriately
+exporting our final dataframe as a .csv that we can use in our next EDA notebook</p>
+<p>1: found that there were 0 duplicate rows, so there was nothing to remove</p>
 <p>2: looked at thew data types of each column</p>
 <ul>
-<li>they all seem to be correct except for 'Arrival Delay in Minutes' which could be changed from float to int</li>
+<li>'Arrival Delay in Minutes' was mistakenly a float, this was changed to 'int'</li>
+<li>The categorical columns were labelled as an 'object', they were changed to a 'category' data type </li>
 </ul>
-<p>3: looked at the contents of each column</p>
+<p>3: corrected the values of categorical columns</p>
 <ul>
-<li>this gives me an fundamental understanding of what each column is showing but I will need to explore further in the EDA notebook</li>
+<li>Values were shortened if possible</li>
+<li>All values now begin with a capital letter</li>
 </ul>
-<p>4: created an initial data dictionary</p>
+<p>4: renamed specific colunns</p>
 <ul>
-<li>you can refer to this dictionary if you want clarification on what each column is showing for now. We will be creating a new data dictionary once we rename columns and potneitallty drop columns.</li>
+<li>They were all given lower case, appropriate names that made it easier for a first time reader to idenitfy what each showed </li>
 </ul>
 
 </div>
