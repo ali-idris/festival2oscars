@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -283,7 +283,7 @@ The best parameters for the model are {&#39;log__C&#39;: 1, &#39;reduce_dim__n_c
 <span class="c1"># Below I am fitting the logistic regression model to the training data</span>
 <span class="n">LogReg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The train2 score is </span><span class="si">{</span><span class="n">LogReg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="si">}</span><span class="s2"> and the test score is </span><span class="si">{</span><span class="n">LogReg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The train score is </span><span class="si">{</span><span class="n">LogReg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="si">}</span><span class="s2"> and the test score is </span><span class="si">{</span><span class="n">LogReg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -296,7 +296,7 @@ The best parameters for the model are {&#39;log__C&#39;: 1, &#39;reduce_dim__n_c
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>The train2 score is 0.8754344669805095 and the test score is 0.8715737603942101.
+<pre>The train score is 0.8754344669805095 and the test score is 0.8715737603942101.
 </pre>
 </div>
 </div>
@@ -320,6 +320,105 @@ The best parameters for the model are {&#39;log__C&#39;: 1, &#39;reduce_dim__n_c
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_pred</span><span class="o">.</span> <span class="o">=</span> <span class="n">LogReg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-cyan-fg">  Input </span><span class="ansi-green-fg">In [45]</span>
+<span class="ansi-red-fg">    y_pred. = LogReg.predict(X_test_scaled)</span>
+            ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> invalid syntax
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">X_test</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+Input <span class="ansi-green-fg">In [43]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span style="color: rgb(0,135,0)">print</span>(<span class="ansi-yellow-bg">classification_report</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">y_test</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">X_test</span><span class="ansi-yellow-bg">)</span>)
+
+File <span class="ansi-green-fg">~/opt/anaconda3/lib/python3.9/site-packages/sklearn/metrics/_classification.py:2110</span>, in <span class="ansi-cyan-fg">classification_report</span><span class="ansi-blue-fg">(y_true, y_pred, labels, target_names, sample_weight, digits, output_dict, zero_division)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1998</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">classification_report</span>(
+<span class="ansi-green-intense-fg ansi-bold">   1999</span>     y_true,
+<span class="ansi-green-intense-fg ansi-bold">   2000</span>     y_pred,
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2007</span>     zero_division<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">warn</span><span style="color: rgb(175,0,0)">&#34;</span>,
+<span class="ansi-green-intense-fg ansi-bold">   2008</span> ):
+<span class="ansi-green-intense-fg ansi-bold">   2009</span>     <span style="color: rgb(175,0,0)">&#34;&#34;&#34;Build a text report showing the main classification metrics.</span>
+<span class="ansi-green-intense-fg ansi-bold">   2010</span> 
+<span class="ansi-green-intense-fg ansi-bold">   2011</span> <span style="color: rgb(175,0,0)">    Read more in the :ref:`User Guide &lt;classification_report&gt;`.</span>
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2107</span> <span style="color: rgb(175,0,0)">    &lt;BLANKLINE&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">   2108</span> <span style="color: rgb(175,0,0)">    &#34;&#34;&#34;</span>
+<span class="ansi-green-fg">-&gt; 2110</span>     y_type, y_true, y_pred <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">_check_targets</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">y_true</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">y_pred</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2112</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> labels <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-intense-fg ansi-bold">   2113</span>         labels <span style="color: rgb(98,98,98)">=</span> unique_labels(y_true, y_pred)
+
+File <span class="ansi-green-fg">~/opt/anaconda3/lib/python3.9/site-packages/sklearn/metrics/_classification.py:93</span>, in <span class="ansi-cyan-fg">_check_targets</span><span class="ansi-blue-fg">(y_true, y_pred)</span>
+<span class="ansi-green-intense-fg ansi-bold">     90</span>     y_type <span style="color: rgb(98,98,98)">=</span> {<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">multiclass</span><span style="color: rgb(175,0,0)">&#34;</span>}
+<span class="ansi-green-intense-fg ansi-bold">     92</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">len</span>(y_type) <span style="color: rgb(98,98,98)">&gt;</span> <span style="color: rgb(98,98,98)">1</span>:
+<span class="ansi-green-fg">---&gt; 93</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ValueError</span>(
+<span class="ansi-green-intense-fg ansi-bold">     94</span>         <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Classification metrics can</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">t handle a mix of </span><span class="ansi-bold" style="color: rgb(175,95,135)">{0}</span><span style="color: rgb(175,0,0)"> and </span><span class="ansi-bold" style="color: rgb(175,95,135)">{1}</span><span style="color: rgb(175,0,0)"> targets</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(98,98,98)">.</span>format(
+<span class="ansi-green-intense-fg ansi-bold">     95</span>             type_true, type_pred
+<span class="ansi-green-intense-fg ansi-bold">     96</span>         )
+<span class="ansi-green-intense-fg ansi-bold">     97</span>     )
+<span class="ansi-green-intense-fg ansi-bold">     99</span> <span style="color: rgb(95,135,135)"># We can&#39;t have more than one value on y_type =&gt; The set is no more needed</span>
+<span class="ansi-green-intense-fg ansi-bold">    100</span> y_type <span style="color: rgb(98,98,98)">=</span> y_type<span style="color: rgb(98,98,98)">.</span>pop()
+
+<span class="ansi-red-fg">ValueError</span>: Classification metrics can&#39;t handle a mix of binary and multiclass-multioutput targets</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 </div>
 
 
