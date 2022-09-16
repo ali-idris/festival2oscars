@@ -1,0 +1,27 @@
+Hi.
+
+
+I’m Ali
+
+To graduate from the BrainStation Data Science Bootcamp, I am submitting my capstone presentation. My project looks to answer the question:  What factors lead to customer satisfaction for an Airline?
+
+In this project I
+1: Use data cleaning & visualisation techniques to prepare and understand the dataset
+2: Use machine learning techniques to build models and extract data-driven insights I can use to answer the core question
+3: Communicate as concisely as possible whilst always keeping the core question in mind
+
+The dataset can be downloaded here: https://www.kaggle.com/datasets/johndddddd/customer-satisfaction
+
+
+The notebooks in this submission are as follows. They sit in the ‘notebooks’ folder:
+1: 1 - Loading and Cleaning
+2: 2 - EDA & Pre Processing
+3: 3 - Modelling
+
+
+Additionally, the data can be found in the ‘data’ folder
+1: satisfaction_2015.xlsx (required for notebook 1)
+2: cleaned_airlines.csv  (required for notebook 2)
+3: cleaned_airlines2.csv  (required for notebook 3)
+
+Thank you for your time. 
